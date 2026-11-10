@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#0b0e13" />
+  <title>SAVIA — Invernadero científico</title>
+  <link rel="stylesheet" href="/static/styles.css" />
+</head>
+<body>
+<svg class="svg-defs" xmlns="http://www.w3.org/2000/svg">
+<symbol id="ic-leaf" viewBox="0 0 24 24"><path d="M20 4C8 4 3 9 3 16a5 5 0 0 0 5 5c7 0 12-5 12-17Z"/><path d="M4 20c3-6 8-9 13-11"/></symbol>
+<symbol id="ic-panel" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="9" rx="1.5"/><rect x="14" y="3" width="7" height="5" rx="1.5"/><rect x="14" y="12" width="7" height="9" rx="1.5"/><rect x="3" y="16" width="7" height="5" rx="1.5"/></symbol>
+<symbol id="ic-plants" viewBox="0 0 24 24"><path d="M12 22V9"/><path d="M12 13C4 13 3 9 3 5c6 0 9 3 9 8ZM12 17c8 0 9-4 9-8-6 0-9 3-9 8Z"/></symbol>
+<symbol id="ic-scan" viewBox="0 0 24 24"><path d="M4 9V5a1 1 0 0 1 1-1h4m6 0h4a1 1 0 0 1 1 1v4M4 15v4a1 1 0 0 0 1 1h4m6 0h4a1 1 0 0 0 1-1v-4"/><circle cx="12" cy="12" r="4"/><circle cx="12" cy="12" r="1"/></symbol>
+<symbol id="ic-chart" viewBox="0 0 24 24"><path d="M4 20V4m0 16h16M7 15l4-5 3 3 6-7"/></symbol>
+<symbol id="ic-db" viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v14c0 1.7 3.6 3 8 3s8-1.3 8-3V5M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3"/></symbol>
+<symbol id="ic-cloud" viewBox="0 0 24 24"><path d="M7 18h11a4 4 0 0 0 0-8h-1a6 6 0 0 0-11-2 5 5 0 0 0 1 10Z"/></symbol>
+<symbol id="ic-spark" viewBox="0 0 24 24"><path d="m12 3 2.2 6.8L21 12l-6.8 2.2L12 21l-2.2-6.8L3 12l6.8-2.2L12 3Z"/></symbol>
+<symbol id="ic-settings" viewBox="0 0 24 24"><path d="M9.7 3.6c1.5-.5 3-.5 4.6 0l.5 2.2 1.8 1.1 2.2-.7 2.3 4-1.7 1.6v2.2l1.7 1.6-2.3 4-2.2-.7-1.8 1.1-.5 2.2c-1.6.5-3.1.5-4.6 0l-.5-2.2-1.8-1.1-2.2.7-2.3-4 1.7-1.6v-2.2L2.9 10l2.3-4 2.2.7 1.8-1.1.5-2.2Z"/><circle cx="12" cy="12" r="3"/></symbol>
+<symbol id="ic-menu" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></symbol>
+<symbol id="ic-close" viewBox="0 0 24 24"><path d="m5 5 14 14M19 5 5 19"/></symbol>
+<symbol id="ic-plus" viewBox="0 0 24 24"><path d="M12 4v16M4 12h16"/></symbol>
+<symbol id="ic-arrow" viewBox="0 0 24 24"><path d="M4 12h16m-7-7 7 7-7 7"/></symbol>
+<symbol id="ic-up" viewBox="0 0 24 24"><path d="M12 19V5m-7 7 7-7 7 7"/></symbol>
+<symbol id="ic-camera" viewBox="0 0 24 24"><path d="M3 7h4l2-3h6l2 3h4v13H3Z"/><circle cx="12" cy="13" r="4"/></symbol>
+<symbol id="ic-send" viewBox="0 0 24 24"><path d="m3 20 18-8L3 4l3 8-3 8Zm3-8h15"/></symbol>
+<symbol id="ic-download" viewBox="0 0 24 24"><path d="M12 3v13m-5-5 5 5 5-5M4 18v3h16v-3"/></symbol>
+<symbol id="ic-trash" viewBox="0 0 24 24"><path d="M4 7h16M10 3h4m-8 4 1 14h10l1-14M10 11v6m4-6v6"/></symbol>
+<symbol id="ic-moon" viewBox="0 0 24 24"><path d="M20 15a8 8 0 0 1-11-11 8.5 8.5 0 1 0 11 11Z"/></symbol>
+<symbol id="ic-check" viewBox="0 0 24 24"><path d="m4 12 5 5 11-11"/></symbol>
+<symbol id="ic-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v6m0-10v1"/></symbol>
+<symbol id="ic-chevron" viewBox="0 0 24 24"><path d="m9 6 6 6-6 6"/></symbol>
+<symbol id="ic-activity" viewBox="0 0 24 24"><path d="M3 12h4l3-8 4 16 3-8h4"/></symbol>
+</svg>
+<div class="shell" id="shell">
+  <div class="overlay" id="overlay" onclick="toggleMobile(false)"></div>
+  <aside class="sidebar" id="sidebar">
+    <div class="brand-row">
+      <div class="brand-mark"><svg><use href="#ic-leaf"/></svg></div>
+      <div class="brand-name"><strong>SAVIA</strong><span>INTELLIGENCE SYSTEM</span></div>
+      <button class="icon-btn toggle-side" title="Contraer menú" onclick="toggleSidebar()"><svg><use href="#ic-menu"/></svg></button>
+    </div>
+    <div class="side-section-label">ESPACIO DE TRABAJO</div>
+    <nav class="nav-list" id="mainnav">
+      <button data-page="overview" class="nav-link active" onclick="navigate('overview')"><svg><use href="#ic-panel"/></svg><span>Vista general</span></button>
+      <button data-page="plants" class="nav-link" onclick="navigate('plants')"><svg><use href="#ic-plants"/></svg><span>Mis plantas</span></button>
+      <button data-page="vision" class="nav-link" onclick="navigate('vision')"><svg><use href="#ic-scan"/></svg><span>Análisis visual</span></button>
+      <button data-page="sensors" class="nav-link" onclick="navigate('sensors')"><svg><use href="#ic-chart"/></svg><span>Monitoreo y sensores</span></button>
+      <button data-page="training" class="nav-link" onclick="navigate('training')"><svg><use href="#ic-db"/></svg><span>Centro de entrenamiento</span></button>
+      <button data-page="rotation" class="nav-link" onclick="navigate('rotation')"><svg><use href="#ic-plants"/></svg><span>Planificador de rotación</span></button>
+      <button data-page="weather" class="nav-link" onclick="navigate('weather')"><svg><use href="#ic-cloud"/></svg><span>Clima regional</span></button>
+    </nav>
+    <div class="side-section-label lower-label">ASISTENTE</div>
+    <nav class="nav-list">
+      <button data-page="assistant" class="nav-link" onclick="navigate('assistant')"><svg><use href="#ic-spark"/></svg><span>Hablar con SAVIA</span><span class="nav-badge">AI</span></button>
+      <button data-page="settings" class="nav-link" onclick="navigate('settings')"><svg><use href="#ic-settings"/></svg><span>Configuración</span></button>
+    </nav>
+    <div class="sidebar-bottom">
+      <div class="sidebar-help"><div class="status-beacon"></div><div><strong>Servidor local</strong><span>Tu información en este equipo</span></div></div>
+      <div class="bottom-version">SAVIA Studio <span>v1.0</span></div>
+    </div>
+  </aside>
+  <div class="workspace">
+    <header class="topbar">
+      <div class="top-left"><button class="icon-btn mobile-toggle" title="Abrir menú" onclick="toggleMobile(true)"><svg><use href="#ic-menu"/></svg></button>
+        <span id="crumb" class="breadcrumb">Invernadero científico <span class="separator">/</span> Vista general</span></div>
+      <div class="top-actions"><span class="live-pill"><span class="live-dot"></span>Entorno local</span><button class="icon-btn" id="themeToggle" title="Cambiar tema" onclick="toggleTheme()"><svg><use href="#ic-moon"/></svg></button><span class="avatar">S</span></div>
+    </header>
+    <main id="content" class="content"><div class="loading-screen"><div class="spin"></div><p>Iniciando SAVIA…</p></div></main>
+  </div>
+</div>
+<div id="toast-layer" class="toast-layer"></div>
+<div id="modal-root"></div>
+<script src="/static/app.js"></script>
+</body></html>

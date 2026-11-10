@@ -1,0 +1,39 @@
+AGROIA PRO | PAQUETE DE DATASETS | 21 octubre 2026
+
+A. CSV DE PRUEBA LISTOS AHORA MISMO
+- AgroIA_Zenodo_muestra_100_ES.csv: 100 observaciones obtenidas de las primeras 100 filas publicadas por los autores en Zenodo, etiquetas traducidas. Adecuado SOLO para verificar que AgroIA Pro entrena y predice; no para evaluar precisión científica o tomar decisiones agronómicas.
+- AgroIA_Zenodo_muestra_100.csv: mismas observaciones, etiquetas originales en inglés. NO unir ni entrenar con ambos archivos a la vez.
+
+B. DESCARGA AUTOMÁTICA (CON INTERNET EN TU EQUIPO)
+Ejecuta desde esta carpeta:
+  python3 descargar_datasets_agroia.py
+Se creará la carpeta descargados/ con:
+- agroia_zenodo_5000_ES.csv (válido para entrenamiento AgroIA, con etiquetas en español)
+- agroia_zenodo_5000_original_labels.csv (mismos registros; NO combinar)
+- zenodo_original_5000.csv (datos originales publicados; NO subir directamente porque usa crop_label en lugar de label)
+- SIAP_Mexico_produccion_2025_original.csv (datos gubernamentales: NO entrena directamente el modelo AgroIA)
+- NASA_POWER_Culiacan_clima_2025.csv (clima histórico aproximado Culiacán: NO entrena directamente)
+
+Fuentes:
+1. Zenodo, Kwaghtyo, Eke y Ajon, Crop Recommendation Dataset with Synthetic Data Augmentation (2026), DOI 10.5281/zenodo.19709807
+   https://zenodo.org/records/19709807
+   https://zenodo.org/records/19709807/files/original_dataset.csv?download=1
+   Nota: autores atribuyen observaciones de campo a Nigeria; no validados para Sinaloa. Datos presentan registros duplicados: separar siempre por parcela/región antes de evaluar o depurar duplicados; NO mezclar muestras sintéticas en prueba.
+2. DGSIAP Secretaría de Agricultura, Cierre Producción Agrícola 2025.
+   https://nube.agricultura.gob.mx/datosAbiertos/Agricola.php
+3. NASA POWER Daily API, año 2025, coordenadas aproximadas Culiacán (24.81, -107.39), no representan una parcela específica.
+   https://power.larc.nasa.gov/docs/services/api/temporal/daily/
+4. FAO ECOCROP, referencia de requisitos agronómicos (no integrado al CSV).
+   https://www.fao.org/land-water/resources/tools/databases/ecocrop/en
+
+C. PASOS EN AGROIA
+1. Abre http://localhost:8501
+2. Ve a Entrenamiento > Importar un archivo CSV.
+3. Selecciona AgroIA_Zenodo_muestra_100_ES.csv, o, MEJOR, descargados/agroia_zenodo_5000_ES.csv una vez generado.
+4. Pulsa Entrenar. Los datos se usarán con el modelo local.
+
+D. ADVERTENCIAS IMPORTANTES
+- El conjunto de entrenamiento y el dataset oficial SIAP son distintos; nunca inventamos NPK/label a partir del SIAP.
+- Los registros del Zenodo original incluyen casos repetidos. El train/test aleatorio de AgroIA puede sobreestimar accuracy si esos casos aparecen en ambos conjuntos. Hay que eliminar duplicados y validar por región/temporada para un uso científico.
+- Las etiquetas de crops 'ñame', 'chile' y 'yuca' no tienen reglas familiares específicas aún en el optimizador de AgroIA, por lo que la rotación requiere ajustes en engine.py.
+- No está demostrada equivalencia de unidades de NPK entre Zenodo y muestras de suelo locales. Verifica unidades antes de usar valores reales.

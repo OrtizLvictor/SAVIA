@@ -1,0 +1,16 @@
+{
+  "model": "Random Forest",
+  "accuracy_holdout": 1.0,
+  "scores": {
+    "Random Forest": 1.0,
+    "Extra Trees": 1.0,
+    "HistGradientBoosting": 1.0
+  },
+  "rows": 100,
+  "duplicates_removed_from_split": 4,
+  "distinct_crops": 10,
+  "source": "AgroIA_Zenodo_muestra_100_ES.csv",
+  "test_rows": 22,
+  "train_rows": 78,
+  "evaluation": "Separación por grupos de filas idénticas; NO prueba validez para Sinaloa, invernadero o cultivos reales."
+}
